@@ -30,19 +30,19 @@ on:
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/sounddrill31/local_manifests'
+        default: 'https://github.com/ahmmadsubqi/local_manifests'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'lineage-oxygen'
+        default: 'lineage-m21'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
-        default: "oxygen"
+        default: "m21"
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "lineage_oxygen"
+        default: "lineage_m21"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
@@ -111,8 +111,8 @@ jobs:
       # Generate 'git' credential in base of the workflow's author.
     - name: Set-up 'git' credential(s)
       run: |
-        git config --global user.name "${{ github.actor }}"
-        git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+        git config --global user.name "ahmadsubqi"
+        git config --global user.email "11675424+ahmadsubqi@users.noreply.github.com"
         if [ -z ${GITHUB_TOKEN} ]; then
           echo machine github.com login ${GITHUB_TOKEN} password ${GITHUB_TOKEN} >> ${PWD}/.netrc
         fi
@@ -201,7 +201,7 @@ jobs:
         repo sync -c -j\$(nproc --all) --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync  && \
 
         # Set up build environment
-        export BUILD_USERNAME=${{ github.actor }} ; \
+        export BUILD_USERNAME=android-builder ; \
         export BUILD_HOSTNAME=crave ; \
         source build/envsetup.sh && \
 
